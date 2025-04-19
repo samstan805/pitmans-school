@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admission Form - Pitman's Model School</title>
+  <link rel="stylesheet" href="style.css">
+  <script
+  src="https://cdnjs.cloudfare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Pitman's Model Secondary School</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admission.html" class="active">Admission</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reviews.html">Review</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Student Admission Form</h2>
+    <form id="admissionForm">
+      <fieldset>
+        <legend>Parent/Guardian Information</legend>
+        <label>Full Name: <input type="text" name="parentName" required></label>
+        <label>Phone Number: <input type="tel" name="parentPhone" required></label>
+        <label>Email: <input type="email" name="parentEmail"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label>Full Name: <input type="text" name="studentName" required></label>
+        <label>Date of Birth: <input type="date" name="dob" required></label>
+        <label>Gender:
+          <select name="gender" required>
+            <option>Male</option>
+            <option>Female</option>
+          </select>
+        </label>
+        <label>Address: <textarea name="address" required></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Academic Information</legend>
+        <label>Class Applying For:
+          <select name="class">
+            <option>JSS1</option>
+            <option>JSS2</option>
+            <option>JSS3</option>
+            <option>SS1</option>
+            <option>SS2</option>
+            <option>SS3</option>
+          </select>
+        </label>
+
+        <label>Department Applying For:
+          <select name="department">
+            <option>Science</option>
+            <option>Arts</option>
+            <option>Commercial</option>
+          </select>
+        </label>
+
+        <label>Skills: <input type="text" name="skills" placeholder="e.g. Drawing, Typing, Painting"></label>
+        <label>Hobbies: <input type="text" name="hobbies" placeholder="e.g. Reading, Sports"></label>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit">Submit & Download Form</button>
+        <button type="button" onclick="downloadAdmissionLetter()">Download Admission Letter</button>
+      </div>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Pitman's Model Secondary School</p>
+  </footer>
+
+  <script>
+  document.getElementById('admissionForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Capture form values
+    const form = e.target;
+    const data = {
+      parentName: form.parentName.value,
+      parentPhone: form.parentPhone.value,
+      parentEmail: form.parentEmail.value,
+      studentName: form.studentName.value,
+      dob: form.dob.value,
+      gender: form.gender.value,
+      address: form.address.value,
+      class: form.class.value,
+      department: form.department.value,
+      skills: form.skills.value,
+      hobbies: form.hobbies.value
+    };
+
+    doc.setFontSize(16);
+    doc.text("Pitman's Model Secondary School", 20, 20);
+    doc.setFontSize(12);
+    doc.text("Student Admission Form", 20, 30);
+
+    let y = 40;
+    for (const [label, value] of Object.entries(data)) {
+      doc.text(`${label.replace(/([A-Z])/g, ' $1')}: ${value}`, 20, y);
+      y += 10;
+    }
+
+    doc.save('Pitmans_Admission_Form.pdf');
+  });
+
+  function downloadAdmissionLetter() {
+    const letterWindow = window.open('', '', 'height=700,width=800');
+    letterWindow.document.write(`
+      <html>
+        <head>
+          <title>Admission Letter</title>
+          <style>
+            body {
+              font-family: 'Georgia', serif;
+              padding: 50px;
+              background: #f7faff;
+              color: #003366;
+            }
+            h1 {
+              text-align: center;
+              color: #003366;
+            }
+            .logo {
+              text-align: center;
+              margin-bottom: 20px;
+            }
+            .content {
+              font-size: 18px;
+              line-height: 1.6;
+              margin-top: 30px;
+            }
+            .footer {
+              margin-top: 50px;
+              text-align: center;
+              font-size: 14px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="logo">
+            <img src="your-logo-url-here" alt="School Logo" width="100"/>
+            <h1>Pitman's Model Secondary School</h1>
+            <h3>Umuocha, Obingwa LGA, Abia State</h3>
+          </div>
+          <div class="content">
+            <p>Dear Student,</p>
+            <p>Congratulations! You have been offered provisional admission into Pitman's Model Secondary School. We are pleased to welcome you to our academic community.</p>
+            <p>Your admission is subject to verification of your submitted documents and payment of the required fees.</p>
+            <p>Please print and bring this letter along with the admission form to the school administration office for further processing.</p>
+            <p>We look forward to seeing you.</p>
+          </div>
+          <div class="footer">
+            <p>Signed,</p>
+            <p>Principal, Pitman's Model Secondary School</p>
+            <p>Date: ${new Date().toLocaleDateString()}</p>
+          </div>
+        </body>
+      </html>
+    `);
+    letterWindow.document.close();
+    letterWindow.print();
+  }
+  </script>
+
+</body>
+</html>

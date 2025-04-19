@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Pitman's Model Secondary School</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a2d9a93b23.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Pitman's Model Secondary School</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admission.html">Admission</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <section class="contact-section">
+    <h2>Get in Touch with Us</h2>
+
+    <div class="contact-container">
+
+      <!-- Contact Form -->
+      <form action="https://formspree.io/f/xldjyajg" method="POST">
+        <!-- your form fields -->
+         
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email Address" required>
+  <input type="text" name="phone" placeholder="Phone Number">
+  <input type="text" name="subject" placeholder="Subject">
+  <textarea name="message" placeholder="Your message here..." required></textarea>
+ 
+        <input type="hidden" name="_redirect" value="https://127.0.0.1:5500/thank-you.html">
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Contact Details -->
+      <div class="contact-info">
+        <h3>School Contact Info</h3>
+        <p><strong>Address:</strong> Umuocha, Obingwa LGA, Abia State, Nigeria</p>
+        <p><strong>Phone:</strong> +234-812-345-6789</p>
+        <p><strong>Email:</strong> pitmansschool@gmail.com</p>
+        <p><strong>Office Hours:</strong> Mon - Fri: 8am - 4pm</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Google Map -->
+    <div class="map-section">
+      <h3>Find Us Here</h3>
+      <iframe src="https://maps.google.com/maps?q=Umuocha,%20Obingwa,%20Abia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h3>Frequently Asked Questions</h3>
+      <ul>
+        <li><strong>When does admission start?</strong> Admissions open every June and continue until September.</li>
+        <li><strong>What documents are needed?</strong> Birth certificate, last school result, passport photo.</li>
+        <li><strong>Is boarding available?</strong> Yes, we offer both day and boarding options.</li>
+      </ul>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="newsletter-section">
+      <h3>Subscribe to Our Newsletter</h3>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Testimonials Preview -->
+    <div class="testimonial-section">
+      <h3>What Our Students Say</h3>
+      <blockquote>"Pitman's gave me a strong foundation for success!" - Chika, SS3 Graduate</blockquote>
+      <blockquote>"Great teachers and excellent facilities!" - John, SS2</blockquote>
+      <a href="reviews.html">Read more testimonials...</a>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <p>&copy; 2025 Pitman's Model Secondary School</p>
+  </footer>
+
+</body>
+</html>
