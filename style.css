@@ -409,7 +409,7 @@
   height: auto;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(127, 136, 4, 0.2);
-  animation-duration: 15s;
+  animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function:ease-in-out;
 }
@@ -428,15 +428,15 @@
 }
 
 .img3 {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 20%;
+  left: 20%;
+  transform: translate(-20%, -20%);
   animation-name: float3;
 }
 
 .img4 {
   bottom: 0;
-  left: 25%;
+  left: 15%;
   animation-name: float4;
 }
 
@@ -735,4 +735,98 @@ form input, form select, form textarea {
   font-size: 24px;
   z-index: 1000;
   text-decoration: none;
+}
+.floating-chat-invite {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background-color: #005a9c;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 15px;
+  animation: pulse 2s infinite;
+  transition: background-color 0.3s;
+  z-index: 9999;
+}
+
+.floating-chat-invite:hover {
+  background-color: #003f6b;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+/* General Navbar Styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #003366;
+  padding: 10px 20px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+.nav-links li a:hover {
+  background: #005599;
+  border-radius: 5px;
+}
+
+/* Hamburger menu */
+.menu-icon {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+/* Mobile view */
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    background: #003366;
+    width: 100%;
+    transition: left 0.3s ease-in-out;
+  }
+
+  #menu-toggle:checked + .menu-icon + .nav-links {
+    left: 0;
+  }
+
+  .menu-icon {
+    display: block;
+  }
 }
