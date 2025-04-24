@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - Pitman's Model Secondary School</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f8ff;
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #005599;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student Registration Form</h2>
+
+  <form id="registrationForm">
+    <!-- Parent/Guardian Data -->
+    <label for="parentName">Parent/Guardian Name</label>
+    <input type="text" id="parentName" name="parentName" required>
+
+    <label for="parentPhone">Phone Number</label>
+    <input type="tel" id="parentPhone" name="parentPhone" required>
+
+    <!-- Student Personal Data -->
+    <label for="studentName">Student Name</label>
+    <input type="text" id="studentName" name="studentName" required>
+
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <!-- Class and Department -->
+    <label for="classIntended">Class Intended to Enter</label>
+    <input type="text" id="classIntended" name="classIntended" required>
+
+    <label for="department">Department Applying For</label>
+    <select id="department" name="department" required>
+      <option value="">Select department</option>
+      <option value="Science">Science</option>
+      <option value="Arts">Arts</option>
+      <option value="Commercial">Commercial</option>
+    </select>
+
+    <!-- Skills and Hobbies -->
+    <label for="skills">Skills</label>
+    <input type="text" id="skills" name="skills">
+
+    <label for="hobbies">Hobbies</label>
+    <input type="text" id="hobbies" name="hobbies">
+
+    <button type="submit">Submit Registration</button>
+  </form>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+
+      const response = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.text();
+      alert(result);
+    });
+  </script>
+
+</body>
+</html>
